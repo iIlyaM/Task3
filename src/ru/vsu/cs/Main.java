@@ -8,20 +8,19 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ROOT);
 
-        Picture picture = new Picture(new Circle(-7,-4,2), new Circle(5,0,3),
-                new Parabola(-1,4,0.5), new Parabola(4,6,1),
-                new Rectangle(1,4,8,9));
-        if(startTest(picture)) {
+        Picture picture = new Picture(new Circle(-7, -4, 2), new Circle(5, 0, 3),
+                new Parabola(-1, 4, 0.5), new Parabola(4, 6, 1),
+                new Rectangle(1, 4, 8, 9));
+        if (startTest(picture)) {
             double x = readValue('x');
             double y = readValue('y');
-            checkValue(x,y);
+            checkValue(x, y);
             Point point = new Point(x, y);
             SimpleColor colors = picture.getColor(x, y);
             printResult(point, colors);
         } else {
             System.out.println("The program is not working correctly.");
         }
-
     }
 
     private static double readValue(char name) {
@@ -31,7 +30,7 @@ public class Main {
     }
 
     private static void checkValue(double x, double y) {
-        while((x > 10 || x < -10) || (y > 10 || y < -10)) {
+        while ((x > 10 || x < -10) || (y > 10 || y < -10)) {
             System.out.println("Error! The value of x and y must be in the range form -10 to 10. Please try again");
             x = readValue('x');
             y = readValue('y');
@@ -69,6 +68,6 @@ public class Main {
     }
 
     private static void printResult(Point point, SimpleColor colors) {
-        System.out.printf("(%.1f; %.1f) -> %.s.", point.getX(), point.getY(), colors);
+        System.out.printf("(%.1f; %.1f) -> %s.", point.getX(), point.getY(), colors);
     }
 }

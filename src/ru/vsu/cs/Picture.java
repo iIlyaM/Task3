@@ -20,7 +20,8 @@ public class Picture {
         if(smallCircle.isPointInside(x,y) || (rectangle.isPointInside(x,y) && !bigCircle.isPointInside(x,y))) {
             return SimpleColor.GRAY;
         }
-        if(bigParabola.isPointInside(x,y) || (bigCircle.isPointInside(x,y) && rectangle.isPointInside(x,y))) {
+        if((bigParabola.isPointInside(x,y) && !smallParabola.isPointInside(x,y)) ||
+                (bigCircle.isPointInside(x,y) && rectangle.isPointInside(x,y))) {
             return SimpleColor.WHITE;
         }
         if(bigParabola.isPointInside(x,y) && smallParabola.isPointInside(x,y)) {

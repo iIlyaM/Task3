@@ -14,6 +14,6 @@ public class Rectangle {
     }
 
     public boolean isPointInside(double x, double y) {
-        return (x >= x0 && x<= width) && y >= height && y <= y0;
+        return (x0 + x) <= width && (y0 + y) <= height;
     }
 }
