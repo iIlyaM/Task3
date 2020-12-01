@@ -12,12 +12,7 @@ public class Main {
                 new Parabola(-1, 4, 0.5), new Parabola(4, 6, 1),
                 new Rectangle(1, 4, 8, 9));
         if (startTest(picture)) {
-            double x = readValue('x');
-            double y = readValue('y');
-            checkValue(x, y);
-            Point point = new Point(x, y);
-            SimpleColor colors = picture.getColor(x, y);
-            printResult(point, colors);
+            startProgram(picture);
         } else {
             System.out.println("The program is not working correctly.");
         }
@@ -34,6 +29,43 @@ public class Main {
             System.out.println("Error! The value of x and y must be in the range form -10 to 10. Please try again");
             x = readValue('x');
             y = readValue('y');
+        }
+    }
+
+    private static void startProgram(Picture picture) {
+        double x = readValue('x');
+        double y = readValue('y');
+        checkValue(x, y);
+        Point point = new Point(x, y);
+        SimpleColor colors = picture.getColor(x, y);
+        printResult(point, colors);
+        System.out.println("\n Continue? Enter YES to continue or NO to  finish the program.");
+        restart(readAnswer(), picture);
+    }
+
+    private static String readAnswer() {
+        Scanner sc = new Scanner(System.in);
+        return sc.nextLine();
+    }
+
+    private static boolean checkAnswer(String answer) {
+        while (true) {
+            if (answer.equalsIgnoreCase("YES")) {
+                return true;
+            } else if (answer.equalsIgnoreCase("NO")) {
+                return false;
+            } else {
+                System.out.println("Please write YES/NO to continue/finish the program");
+                answer = readAnswer();
+            }
+        }
+    }
+
+    private static void restart(String answer, Picture picture) {
+        if (checkAnswer(answer)) {
+            startProgram(picture);
+        } else {
+            System.out.println("Thank you for using program!");
         }
     }
 
